@@ -6,7 +6,7 @@ metadata:
   labels:
     app: productcatalogue
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: productcatalogue
   ports:
@@ -15,14 +15,11 @@ spec:
     name: http
 
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
   name: productcatalogue
 spec:
-  selector:
-    matchLabels:
-      app: productcatalogue
   replicas: 1
   template:
     metadata:

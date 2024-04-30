@@ -6,7 +6,7 @@ metadata:
   labels:
     app: stockmanager
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: stockmanager
   ports:
@@ -15,14 +15,11 @@ spec:
     name: http
 
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: ReplicationController
 metadata:
   name: stockmanager
 spec:
-  selector:
-    matchLabels:
-      app: stockmanager
   replicas: 1
   template:
     metadata:
