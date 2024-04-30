@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: shopfront
-        image: rajkumar207/shopfrontlatest:latest
+        image: rajkumar207/shopfront:latest
         ports:
         - containerPort: 8010
         livenessProbe:
