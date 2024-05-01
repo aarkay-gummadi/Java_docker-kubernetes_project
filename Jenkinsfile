@@ -61,5 +61,29 @@ pipeline {
                     
             }
         }
+        stage ('Building New Docker Image stockmanager') {
+            steps {
+                script {
+                    dir('./shopfront') {
+                        //  Building new image
+                        sh 'mvn clean install -DskipTests'
+                        sh 'docker image build -t rajkumar207/stockman:latest .'
+                        echo "Image successfully built"
+                    }
+                }
+            }
+        }
+        stage('Updating Image On Dockerhub of stockmanager'){
+            steps {
+                script {
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                    sh 'docker push rajkumar207/stockman:latest'
+                
+                    echo "Image has been updated on dockerhub"
+                    
+                }
+                    
+            }
+        }
     }
 }
