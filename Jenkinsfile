@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('git checkout') {
             steps {
-                sh 'git clone https://github.com/aarkay-gummadi/Java_docker-kubernetes_project.git'
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/aarkay-gummadi/Java_docker-kubernetes_project.git']])
 
             }
         }
