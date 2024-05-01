@@ -15,7 +15,7 @@ pipeline {
                     dir('./productcatalogue') {
                         //  Building new image
                         sh 'mvn clean install'
-                        sh 'docker image build -t $DOCKER_HUB_REPO:$BUILD_NUBMER .'
+                        sh 'docker image build -t productcat:latest .'
                         echo "Image successfully built"
                     }
                 }
