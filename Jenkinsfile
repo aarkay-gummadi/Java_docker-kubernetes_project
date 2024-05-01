@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage ('git checkout') {
             steps {
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/aarkay-gummadi/Java_docker-kubernetes_project.git']])
+                sh 'git clone https://github.com/aarkay-gummadi/Java_docker-kubernetes_project.git'
 
             }
         }
@@ -12,7 +12,7 @@ pipeline {
                 script {
                     dir('./productcatalogue') {
                         //  Building new image
-                        sh 'mvn clean install'
+                        sh 'mvn clean'
                         sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
                         sh 'docker image tag $DOCKER_HUB_REPO:latest $DOCKER_HUB_REPO:$BUILD_NUMBER'
                         echo "Image successfully built"
