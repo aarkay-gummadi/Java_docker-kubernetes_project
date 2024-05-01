@@ -1,8 +1,8 @@
 pipeline {
     agent any
-        environment {
-            REGISTRY_CREDENTIAL = "Docker_cred"
-        }
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('Docker_cred')
+    }
 
     stages {
         stage ('git checkout') {
