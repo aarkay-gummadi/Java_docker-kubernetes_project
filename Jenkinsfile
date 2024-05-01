@@ -87,13 +87,9 @@ pipeline {
         }
         stage('minikube starting') {
             steps {
-                script {
-                    dir('./kubernetes') {
-                        sh 'sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64'
-                        sh 'curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64'
-                        sh 'minikube start'
-                    } 
-                }
+                sh 'sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64'
+                sh 'curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64'
+                sh 'minikube start'
             }
         }
         stage ('installing kubectl') {
