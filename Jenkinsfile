@@ -1,5 +1,9 @@
 pipeline {
     agent any
+        environment {
+            REGISTRY_CREDENTIAL = "Docker_cred"
+        }
+
     stages {
         stage ('git checkout') {
             steps {
