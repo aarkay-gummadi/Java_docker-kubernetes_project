@@ -14,9 +14,8 @@ pipeline {
                 script {
                     dir('./productcatalogue') {
                         //  Building new image
-                        sh 'mvn clean'
-                        sh 'docker image build -t $DOCKER_HUB_REPO:latest .'
-                        sh 'docker image tag $DOCKER_HUB_REPO:latest $DOCKER_HUB_REPO:$BUILD_NUMBER'
+                        sh 'mvn clean install'
+                        sh 'docker image build -t $DOCKER_HUB_REPO:$BUILD_NUBMER .'
                         echo "Image successfully built"
                     }
                 }
