@@ -28,14 +28,13 @@ pipeline {
         stage('Updating Image On Dockerhub'){
             steps {
                 script {
-                    //  Pushing Image to Repository
-                    withCredentials([usernameColonPassword(credentialsId: 'Docker_cred', variable: 'docker_cred')]) {
-                    // some block
-                    }
-                }
+                    sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                     sh 'docker push rajkumar207/productcat:latest'
                 
                     echo "Image has been updated on dockerhub"
+                    
+                }
+                    
             }
         }
     }
