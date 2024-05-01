@@ -95,6 +95,12 @@ pipeline {
                     } 
                 }
             }
+        }
+        stage ('installing kubectl') {
+            steps {
+                sh 'sudo snap install kubectl --classic'
+                echo 'installed kubectl successfully'
+            }
         } 
     }
 }
