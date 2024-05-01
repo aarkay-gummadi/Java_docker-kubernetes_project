@@ -3,6 +3,8 @@ pipeline {
     stages {
         stage ('git checkout') {
             steps {
+                sh 'rm -rf Java_docker-kubernetes_project'
+
                 sh 'git clone https://github.com/aarkay-gummadi/Java_docker-kubernetes_project.git'
 
             }
