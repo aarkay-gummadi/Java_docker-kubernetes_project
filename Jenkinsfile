@@ -87,8 +87,8 @@ pipeline {
         }
         stage('minikube starting') {
             steps {
-                sh 'sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64'
-                sh 'curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64'
+                sh 'curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb'
+                sh 'sudo dpkg -i minikube_latest_amd64.deb'
                 sh 'minikube start'
             }
         }
