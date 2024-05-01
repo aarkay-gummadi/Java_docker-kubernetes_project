@@ -28,11 +28,10 @@ pipeline {
                     withCredentials([usernameColonPassword(credentialsId: 'Docker_cred', variable: 'docker_cred')]) {
                     // some block
                     }
-                    }
+                }
                     sh 'docker push rajkumar207/productcat:latest'
                 
                     echo "Image has been updated on dockerhub"
-                }
             }
         }
     }
