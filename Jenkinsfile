@@ -15,9 +15,23 @@ pipeline {
                     dir('./productcatalogue') {
                         //  Building new image
                         sh 'mvn clean install'
-                        sh 'docker image build -t productcat:latest .'
+                        sh 'docker image build -t rajkumar207/productcat:latest .'
                         echo "Image successfully built"
                     }
+                }
+            }
+        }
+        stage('Updating Image On Dockerhub'){
+            steps {
+                script {
+                    //  Pushing Image to Repository
+                    withCredentials([usernameColonPassword(credentialsId: 'Docker_cred', variable: 'docker_cred')]) {
+                    // some block
+                    }
+                    }
+                    sh 'docker push rajkumar207/productcat:latest'
+                
+                    echo "Image has been updated on dockerhub"
                 }
             }
         }
