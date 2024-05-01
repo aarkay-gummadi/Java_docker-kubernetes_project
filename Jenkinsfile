@@ -37,7 +37,7 @@ pipeline {
                     
             }
         }
-        stage ('Building New Docker Image') {
+        stage ('Building New Docker Image shopfront') {
             steps {
                 script {
                     dir('./shopfront') {
@@ -49,7 +49,7 @@ pipeline {
                 }
             }
         }
-        stage('Updating Image On Dockerhub'){
+        stage('Updating Image On Dockerhub of shfr'){
             steps {
                 script {
                     sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
