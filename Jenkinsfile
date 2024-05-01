@@ -97,6 +97,24 @@ pipeline {
                 sh 'sudo snap install kubectl --classic'
                 echo 'installed kubectl successfully'
             }
+        }
+        stage ('deploy k8s') {
+            steps {
+                script {
+                    dir('./kubernetes') {
+                        sh 'kubectl apply -f productcatalogue-service.yaml'
+                        sh 'kubectl apply -f shopfront-service.yaml'
+                        sh 'kubectl apply -f stockmanager-service.yaml'
+                    }
+                }
+            }
+        }
+        stage ('know the service individuals') {
+            steps {
+                sh 'minikube service productcatalogue'
+                sh 'minikube service shopfront'
+                sh 'minikube service stockmanager'
+            }
         } 
     }
 }
