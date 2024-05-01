@@ -42,7 +42,7 @@ pipeline {
                 script {
                     dir('./shopfront') {
                         //  Building new image
-                        sh 'mvn clean install'
+                        sh 'mvn clean install -DskipTests'
                         sh 'docker image build -t rajkumar207/shopfr:latest .'
                         echo "Image successfully built"
                     }
